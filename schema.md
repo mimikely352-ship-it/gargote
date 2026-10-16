@@ -1,7 +1,15 @@
-table carte |
-------------|
-- idCarte   |   
-- nomPlat   |
-- categorie |
-- prix      |
-------------|
+table carte  |                      
+-------------|
+- idCarte    |   
+- nomPlat    |                        
+- idCategorie|
+- prix       |
+-------------|
+
+
+----------------|
+table categorie |
+----------------|
+- idCategorie   |   
+- categorie     |                        
+----------------|
