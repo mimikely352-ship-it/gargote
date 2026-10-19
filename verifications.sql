@@ -29,3 +29,15 @@ ORDER BY commande.idCommande;
 
 Piege:
  j'ai place la quantite dans la table d'association "commandePlat".
+
+
+-----------------------------------------------------------------------------------
+
+Etape 4: Liste des commandes avec le nom du client, en affichant « client de passage » quand il n'y en a pas.
+
+SELECT FROM commande JOIN commandeClient 
+on commande.idCommande=commandeClient.idCommande 
+JOIN client on commandeClient.idClient=client.idClient JOIN 
+
+
+Piege: 

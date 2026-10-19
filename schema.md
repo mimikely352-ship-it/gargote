@@ -32,3 +32,18 @@ table commandePlat |
 - quantite         |                        
 -------------------|
 
+-------------|
+table client |
+-------------|
+- idClient   |   
+- nom        |                         
+-------------|
+
+---------------------|
+table commandeClient |
+---------------------|
+- idcommandeClient   |
+- idCommande         |
+- idClient           |                              
+---------------------|
+
