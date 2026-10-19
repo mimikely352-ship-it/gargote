@@ -72,3 +72,21 @@ table commandeServeurTable |
 - idCommandePlat           |            
 - idTable                  |                  
 ---------------------------|
+
+
+---------------------|
+table modeDePayement |
+---------------------|
+- idModeDePayement   |
+- modeDePayement     |                              
+---------------------|
+
+---------------------|
+table payement       |
+---------------------|
+- idPayement         |
+- idCommande         |      
+- idModeDePayement   |
+- montant            |
+- reference          |                       
+---------------------|

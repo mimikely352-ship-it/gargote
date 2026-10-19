@@ -44,6 +44,7 @@ Piege:
 
 
 -----------------------------------------------------------------------------------
+
 Etape 5: nombre de commandes et chiffre d'affaires par serveur.
 
 SELECT count(cst.idCommandePlat) as nombreCommande,s.nomServeur as serveurNom, s.prenomServeur as serveurPrenom, sum(cp.quantite*ca.prix) as CA
@@ -54,3 +55,27 @@ join carte as ca on cp.idPlatCarte=ca.idCarte group by s.idServeur;
 
 Piege: Le mot "table" pose un probleme en sql car ca se confond avec 
 le syntaxe table de la creation de table en sql "CREATE TABLE..."
+
+-----------------------------------------------------------------------------------
+
+Etape 6: liste des commandes non soldées avec le
+montant dû, le montant payé et le reste à payer
+
+SELECT 
+    c.idCommande AS numeroCommande,
+    (du.montantDu) AS montantDu,
+    (paye.montantPaye) AS montantPaye,
+    (du.montantDu) - COALESCE(paye.montantPaye) AS resteAPayer
+FROM commande c
+LEFT JOIN (
+    SELECT cp.idCommande, SUM(ca.prix * cp.quantite) AS montantDu
+    FROM commandePlat cp
+    JOIN carte ca ON cp.idPlatCarte = ca.idCarte
+    GROUP BY cp.idCommande
+) du ON c.idCommande = du.idCommande
+LEFT JOIN (
+    SELECT idCommande, SUM(montant) AS montantPaye
+    FROM payement
+    GROUP BY idCommande
+) paye ON c.idCommande = paye.idCommande
+WHERE (du.montantDu) - (paye.montantPaye)> 0;
