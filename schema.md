@@ -47,3 +47,28 @@ table commandeClient |
 - idClient           |                              
 ---------------------|
 
+
+----------------|
+table serveur   |
+----------------|
+- idServeur     |
+- nomServeur    |
+- prenomServeur |                              
+----------------|
+
+-------------|
+table tables |
+-------------|
+- idTable    |
+- tables     |                              
+-------------|
+
+
+---------------------------|
+table commandeServeurTable |
+---------------------------|
+- idCommandeServeurTable   |
+- idServeur                |
+- idCommandePlat           |            
+- idTable                  |                  
+---------------------------|

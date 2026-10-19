@@ -41,3 +41,16 @@ JOIN client on commandeClient.idClient=client.idClient JOIN
 
 
 Piege: 
+
+
+-----------------------------------------------------------------------------------
+Etape 5: nombre de commandes et chiffre d'affaires par serveur.
+
+SELECT count(cst.idCommandePlat) as nombreCommande,s.nomServeur as serveurNom, s.prenomServeur as serveurPrenom, sum(cp.quantite*ca.prix) as CA
+FROM serveur as s JOIN commandeServeurTable as cst on s.idServeur=cst.idServeur 
+join commandePlat as cp on cst.idCommandePlat=cp.idCommandePlat join tables as t on cst.idTable=t.idTable 
+join carte as ca on cp.idPlatCarte=ca.idCarte group by s.idServeur;
+
+
+Piege: Le mot "table" pose un probleme en sql car ca se confond avec 
+le syntaxe table de la creation de table en sql "CREATE TABLE..."
