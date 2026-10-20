@@ -108,3 +108,20 @@ ORDER BY commande.idCommande;
 Piege:
 
 
+-----------------------------------------------------------------------------------
+
+Etape 8: consommation théorique de chaque ingrédient pour la journée du 12 octobre
+
+SELECT 
+    i.nomIngredient,
+    SUM(cp.quantite * cop.quantite) AS consommationTotale,
+    i.unite
+FROM commande c
+JOIN commandePlat cp ON c.idCommande = cp.idCommande
+JOIN compositionPlat cop ON cp.idPlatCarte = cop.idPlatCarte
+JOIN ingredient i ON cop.idIngredient = i.idIngredient
+WHERE c.dates = '2026-10-12'
+GROUP BY i.idIngredient, i.nomIngredient, i.unite;
+
+Piege: La colonne ingredients VARCHAR(500) contenant « riz, zébu, brèdes » n'est pas
+conseillé', car c'est difficile de le manipuler et ca a l'air brouillant.

@@ -103,13 +103,22 @@ table augmentation |
 
 
 --------------------|
-table ingredients   |
+table ingredient    |
 --------------------|
-- idIngredients     |
-- idPlatCarte       |      
-- ingredients       |
-- quantiteIngredient| 
+- idIngredient      |
+- nomIngredient     |      
+- stock             |
 - unite             |                    
 --------------------|
+
+
+----------------------|
+table compositionPlat |
+----------------------|
+- idCompositionPlat   |
+- idPlatCarte         |      
+- idIngredient        |
+- quantite            |                    
+----------------------|
 
 
