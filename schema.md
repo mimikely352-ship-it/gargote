@@ -122,3 +122,20 @@ table compositionPlat |
 ----------------------|
 
 
+-----------|
+table menu |
+-----------|
+- idMenu   |
+- libelle  |      
+- prix     |
+-----------|
+
+
+---------------|
+table PlatMenu |
+---------------|
+- idPlatMenu   |
+- idMenu       |      
+- idCarte      |
+- quantite     |
+---------------|

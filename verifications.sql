@@ -125,3 +125,15 @@ GROUP BY i.idIngredient, i.nomIngredient, i.unite;
 
 Piege: La colonne ingredients VARCHAR(500) contenant « riz, zébu, brèdes » n'est pas
 conseillé', car c'est difficile de le manipuler et ca a l'air brouillant.
+
+
+-----------------------------------------------------------------------------------
+
+Etape 9: : pour chaque menu, son prix, la somme
+des prix à la carte et l'économie réalisée par le client.'
+
+SELECT m.idMenu,m.prix as menuPrix,sum(pm.quantite*c.prix) as sommePrixALaCarte,sum(pm.quantite*c.prix)-m.prix as economie 
+from menu as m join PlatMenu as pm on m.idMenu=pm.idMenu 
+join carte as c on pm.idCarte=c.idCarte group by m.idMenu;
+
+Piege:
