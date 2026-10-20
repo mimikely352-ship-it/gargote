@@ -79,3 +79,32 @@ LEFT JOIN (
     GROUP BY idCommande
 ) paye ON c.idCommande = paye.idCommande
 WHERE (du.montantDu) - (paye.montantPaye)> 0;
+
+Piege:
+
+-----------------------------------------------------------------------------------
+
+Etape 7: relancement de letape 3: montant total de chaque commande
+
+SELECT commande.dates as date,
+commande.idCommande as NumeroCommande,
+sum(
+    COALESCE(
+    (select au.nouveauPrix 
+    from augmentation as au 
+    where au.idCarte=carte.idCarte 
+    AND au.dates<=commande.dates 
+    order by au.dates LIMIT 1
+    ),
+    carte.prix
+    )* commandePlat.quantite
+    ) as Montant 
+FROM carte 
+join commandePlat on carte.idCarte=commandePlat.idPlatCarte 
+join commande on commande.idCommande=commandePlat.idCommande
+GROUP BY commande.dates, commande.idCommande
+ORDER BY commande.idCommande;
+
+Piege:
+
+

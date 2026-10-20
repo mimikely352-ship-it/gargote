@@ -90,3 +90,26 @@ table payement       |
 - montant            |
 - reference          |                       
 ---------------------|
+
+
+-------------------|
+table augmentation |
+-------------------|
+- idAugmentation   |
+- idCarte          |      
+- dates            |
+- nouveauPrix      |                    
+-------------------|
+
+
+--------------------|
+table ingredients   |
+--------------------|
+- idIngredients     |
+- idPlatCarte       |      
+- ingredients       |
+- quantiteIngredient| 
+- unite             |                    
+--------------------|
+
+
